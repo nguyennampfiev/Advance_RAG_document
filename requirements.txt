@@ -1,0 +1,8 @@
+gradio
+unstructured_ingest
+unstructured-ingest[remote]
+dotenv
+groq
+langchain_community
+langchain
+langchain_chroma
