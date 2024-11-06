@@ -44,7 +44,6 @@ def process_file(file: str) -> str:
         base_name = os.path.basename(file)
         shutil.copy(file,os.path.join(DATA,base_name))
         if base_name.endswith(('.xlsx', '.xls')):
-            # Load the Excel file into a DataFrame and chunk it
             df = pd.read_excel(file)
             chunk_df = chunk_dataframe(df, chunk_size=1)
             # Convert chunks to the required Document format
@@ -54,9 +53,6 @@ def process_file(file: str) -> str:
                 "sheet_name": df.sheet_names if hasattr(df, 'sheet_names') else "Sheet1",
             }
             for chunk in chunk_df:
-                #chunk_text = "\n".join([", ".join(map(str, row)) for row in chunk])
-                #print(chunk)
-                #assert 1==2
                 chunk_documents.append(Document(page_content=chunk, metadata=metadata))
                 chunk_documents = chroma_utils.filter_complex_metadata(chunk_documents)
         else:
