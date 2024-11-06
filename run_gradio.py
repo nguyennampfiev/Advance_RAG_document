@@ -32,25 +32,11 @@ def create_demo():
             placeholder="Ask a question about the file..."
         )
         
-        send_btn = gr.Button("Send")
-        
-        # Set up event handlers
-        # process_button.click(
-        #     fn=process_pdf,
-        #     inputs=pdf_file,
-        #     outputs=status_text
-        # )
-        
-        send_btn.click(
-            fn=query_rag,
+        msg.submit(
+            fn=lambda msg, history: query_rag(msg, history) + [("", "")],
             inputs=[msg, chatbot_interface],
             outputs=[chatbot_interface]
         )
-        # msg.submit(
-        #     fn=chatbot.chat,
-        #     inputs=[msg, chatbot_interface],
-        #     outputs=[chatbot_interface]
-        # )
     
     return demo
 
