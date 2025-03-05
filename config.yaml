@@ -1,0 +1,30 @@
+temp_dir: null  # Set to null to use system temp dir, or specify a path
+
+# Set to 'auto' or omit these values to let the system auto-detect optimal settings
+accelerator:
+  device: "cpu"  # Will auto-detect GPU if available
+  threads: 0      # Will optimize based on CPU cores (0 = auto-detect)
+
+max_workers: 0    # Will optimize based on available CPU cores/GPUs (0 = auto-detect)
+pages_per_chunk: 0 # Will optimize based on device type (0 = auto-detect)
+
+profile_timings: true
+
+# Pipeline configuration
+pipeline:
+  do_ocr: true
+  do_table_structure: true
+  do_cell_matching: true
+
+# vector database configuration
+vectordb:
+  path: "vectordb"
+  collection_name: "documents"
+
+# embedding configuration
+embedding: 
+  embed_model_id: "sentence-transformers/all-MiniLM-L6-v2"
+## llm configuration
+llm:
+  model_type: "llama"
+  llm_path: "/data_nas/tnguye28/local_llama"
