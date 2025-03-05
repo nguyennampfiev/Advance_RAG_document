@@ -25,7 +25,7 @@ def create_demo():
         msg.submit(
             fn=query_rag,
             inputs=[msg, chatbot_interface],
-            outputs=[chatbot_interface]
+            outputs=[chatbot_interface, msg]
         )
     
     return demo
